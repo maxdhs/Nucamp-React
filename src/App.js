@@ -1,14 +1,17 @@
 import React from "react";
 import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 
-import Menu from "./components/MenuComponent";
-import { DISHES } from "./shared/dishes";
+import Main from "./components/MainComponent";
 
 class App extends React.Component {
-  state = {
-    dishes: DISHES
-  };
-  render = () => <Menu dishes={this.state.dishes} />;
+  render = () => (
+    <BrowserRouter>
+      <div className="App">
+        <Main />
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
