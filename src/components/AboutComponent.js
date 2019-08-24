@@ -9,9 +9,30 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function About(props) {
+const RenderLeader = ({ leader }) => {
+  if (leader != null)
+    return (
+      <Media tag="li">
+        <Media left middle>
+          <Media object src={leader.image} alt={leader.name} />
+        </Media>
+        <Media body className="ml-5">
+          <Media heading>{leader.name}</Media>
+          <p>{leader.designation}</p>
+          <p>{leader.description}</p>
+        </Media>
+      </Media>
+    );
+  else return <div></div>;
+};
+
+const About = props => {
   const leaders = props.leaders.map(leader => {
-    return <p>Leader {leader.name}</p>;
+    return (
+      <div key={leader.id}>
+        <RenderLeader leader={leader} />
+      </div>
+    );
   });
 
   return (
@@ -95,6 +116,6 @@ function About(props) {
       </div>
     </div>
   );
-}
+};
 
 export default About;
